@@ -39,6 +39,8 @@ class AppImages {
   static const String sebhaHead = "assets/images/sebha_head.png";
   static const String sebhaBody = "assets/images/SebhaBody.png";
   static const String sebhaBackground = "assets/images/SebhaBackground.png";
+
+  static const String hadethBackground="assets/images/hadethBackground.png";
 }
 
 class AppTheme {
