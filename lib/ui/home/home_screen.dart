@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:islami/ui/common/most_recent_shared_preferences.dart';
 import 'package:islami/ui/design.dart';
 import 'package:islami/ui/home/prayer/prayer_content.dart';
 import 'package:islami/ui/home/quran/quran_content.dart';
@@ -21,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    MostRecentSharedPreferences provider= MostRecentSharedPreferences.getInstance();
     return AppScreenWrapper(
       child: SafeArea(
         child: Scaffold(

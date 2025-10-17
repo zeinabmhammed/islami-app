@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:islami/ui/design.dart';
 import 'package:islami/ui/home/quran/chapter_row.dart';
-import 'package:islami/ui/sura.dart';
+import 'package:islami/ui/home/quran/most_recent_slider.dart';
+import 'package:islami/ui/chapter.dart';
 
 class QuranContent extends StatefulWidget {
   const QuranContent({super.key});
@@ -53,6 +54,9 @@ class _QuranContentState extends State<QuranContent> {
             ),
           ),
         ),
+        SizedBox(height: 10),
+        MostRecentSlider(),
+
         Expanded(
           child: ListView.separated(
             itemBuilder: (context, index) {

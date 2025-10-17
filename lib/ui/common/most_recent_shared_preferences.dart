@@ -1,8 +1,10 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MostRecentSharedPreferences {
+  static const String _chapter_keys = "most_recent";
+
   static MostRecentSharedPreferences? _mostRecentProvider;
-  static late SharedPreferences _sharedPreferences;
+  late SharedPreferences _sharedPreferences;
 
   MostRecentSharedPreferences._();
 
@@ -42,5 +44,23 @@ class MostRecentSharedPreferences {
 
   Future<void> clear() async {
     await _sharedPreferences.clear();
+  }
+
+  Future<void> savedChapter(int index) async {
+    var storedList = (_sharedPreferences.getStringList(_chapter_keys) ?? []);
+
+    storedList.remove("$index");
+
+    storedList.insert(0, "$index");
+
+    storedList = storedList.toSet().toList();
+
+    await _sharedPreferences.setStringList(_chapter_keys, storedList);
+  }
+
+  List<int> getMostRecentChapters() {
+    return (_sharedPreferences.getStringList(_chapter_keys) ?? [])
+        .map((chapterIndexString) => int.parse(chapterIndexString))
+        .toList();
   }
 }

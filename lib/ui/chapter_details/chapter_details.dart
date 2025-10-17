@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/ui/chapter_details/verse_item.dart';
 import 'package:islami/ui/common/app_screen_wrapper.dart';
+import 'package:islami/ui/common/most_recent_shared_preferences.dart';
 import 'package:islami/ui/design.dart';
-import 'package:islami/ui/sura.dart';
+import 'package:islami/ui/chapter.dart';
+import 'package:islami/ui/providers/most_recent_provider.dart';
+import 'package:provider/provider.dart';
 
 class ChapterDetails extends StatefulWidget {
   const ChapterDetails({super.key});
@@ -19,6 +22,7 @@ class _ChapterDetailsState extends State<ChapterDetails> {
   Widget build(BuildContext context) {
     var chapter = ModalRoute.of(context)!.settings.arguments as Chapter;
 
+    saveChapterToLastVisited(chapter );
     if (verses.isEmpty) {
       loadVerses(chapter.chapterIndex);
     }
@@ -95,6 +99,10 @@ class _ChapterDetailsState extends State<ChapterDetails> {
         ),
       ),
     );
+  }
+  void saveChapterToLastVisited(Chapter chapter) {
+    MostRecentProvider provider = Provider.of<MostRecentProvider>(context, listen: false);
+    provider.saveChapter(chapter);
   }
 
   void loadVerses(int chapterIndex) async {

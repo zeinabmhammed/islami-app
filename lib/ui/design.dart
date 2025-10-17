@@ -41,11 +41,14 @@ class AppImages {
   static const String sebhaBackground = "assets/images/SebhaBackground.png";
 
   static const String hadethBackground="assets/images/hadethBackground.png";
+
+  static const String mostRecentBackground = "assets/images/most_recent.png";
+
 }
 
 class AppTheme {
   static var darkTheme = ThemeData(
-    colorScheme: ColorScheme.dark(primary: AppColors.gold),
+    colorScheme: ColorScheme.dark( primary: AppColors.gold),
     appBarTheme: AppBarTheme(
       color: Colors.transparent,
       titleTextStyle: TextStyle(

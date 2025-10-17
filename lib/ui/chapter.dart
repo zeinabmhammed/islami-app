@@ -360,6 +360,7 @@ class Chapter {
     this.chapterIndex,
   );
 
+  static List<Chapter> chapters = getQuranChapters();
   static List<Chapter> getQuranChapters() {
     List<Chapter> chapters = List.generate(
       114,
