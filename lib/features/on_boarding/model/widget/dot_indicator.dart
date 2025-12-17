@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/design.dart';
+import '../../../../core/resources/AppColors.dart';
 
 class DotIndicator extends StatelessWidget {
   const DotIndicator({super.key, this.isActive = false});

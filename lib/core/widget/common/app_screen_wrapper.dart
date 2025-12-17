@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/design.dart';
+
+import '../../resources/AppImages.dart';
 
 class AppScreenWrapper extends StatelessWidget {
   Widget child;

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/home/quran/chapter_row.dart';
-import 'package:islami/ui/home/quran/most_recent_slider.dart';
-import 'package:islami/ui/chapter.dart';
+import 'package:islami/features/main_layout/quran/chapter_row.dart';
+import 'package:islami/features/main_layout/quran/most_recent_slider.dart';
+import '../../../core/resources/AppColors.dart';
+import '../../../core/resources/AppImages.dart';
+import '../../../data/local_data_source/chapter.dart';
 
 class QuranContent extends StatefulWidget {
   const QuranContent({super.key});

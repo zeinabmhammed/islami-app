@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/on_boarding/model/on_boarding_data.dart';
+import '../../../../core/resources/AppColors.dart';
+import '../../../../data/local_data_source/on_boarding_data.dart';
 
 class PageViewItemWidget extends StatelessWidget {
   final OnBoardingData data;

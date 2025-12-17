@@ -1,4 +1,4 @@
-import 'package:islami/ui/design.dart';
+import '../../core/resources/AppImages.dart';
 
 class OnBoardingData {
   String imagePath;

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:islami/core/cache/cache_keys.dart';
 import 'package:islami/core/cache/shared_pref_service.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/on_boarding/model/on_boarding_data.dart';
-import 'package:islami/ui/on_boarding/model/widget/dot_indicator.dart';
-import 'package:islami/ui/on_boarding/model/widget/page_view_item_widget.dart';
-import 'package:islami/ui/routes.dart';
+
+import '../../core/resources/AppColors.dart';
+import '../../core/resources/AppImages.dart';
+import '../../core/routes_manger/routes.dart';
+import '../../data/local_data_source/on_boarding_data.dart';
+import 'model/widget/dot_indicator.dart';
+import 'model/widget/page_view_item_widget.dart';
+
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});

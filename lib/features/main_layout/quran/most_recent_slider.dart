@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/chapter.dart';
-import 'package:islami/ui/providers/most_recent_provider.dart';
+import 'package:islami/features/main_layout/quran/providers/most_recent_provider.dart';
 import 'package:provider/provider.dart';
+import '../../../core/resources/AppColors.dart';
+import '../../../core/resources/AppImages.dart';
+import '../../../data/local_data_source/chapter.dart';
 
 class MostRecentSlider extends StatefulWidget {
    MostRecentSlider({super.key});

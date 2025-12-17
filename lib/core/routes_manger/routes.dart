@@ -1,5 +1,5 @@
 enum AppRoutes {
-  HomeScreen("home"),
+  HomeScreen("main_layout"),
   ChapterDetails("chapter_details"),
   OnBoardingScreen("on_boarding"),
   FirstSplashScreen("first_splash");

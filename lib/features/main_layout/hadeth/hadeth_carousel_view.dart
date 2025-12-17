@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/home/hadeth/hadeth.dart';
+import 'package:islami/features/main_layout/hadeth/hadeth.dart';
+import '../../../core/resources/AppColors.dart';
 
-class HadethCarouselView extends StatelessWidget {
+class HadethCarouselView extends StatefulWidget {
   Hadeth hadeth;
 
   HadethCarouselView(this.hadeth, {super.key});
 
+  @override
+  State<HadethCarouselView> createState() => _HadethCarouselViewState();
+}
+
+class _HadethCarouselViewState extends State<HadethCarouselView> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,15 +20,12 @@ class HadethCarouselView extends StatelessWidget {
       height: double.infinity,
       decoration: BoxDecoration(
         color: AppColors.gold,
-        image: DecorationImage(
-          image: AssetImage(AppImages.hadethBackground),
-          fit: BoxFit.contain,
-        ),
+
       ),
       child: Column(
         children: [
           Text(
-            hadeth.title,
+            widget.hadeth.title,
             style: Theme.of(
               context,
             ).textTheme.titleLarge?.copyWith(color: AppColors.black),
@@ -32,7 +34,7 @@ class HadethCarouselView extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Text(
-                hadeth.content,
+                widget.hadeth.content,
                 style: Theme.of(
                   context,
                 ).textTheme.titleMedium?.copyWith(color: AppColors.black),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/ui/home/hadeth/hadeth.dart';
-import 'package:islami/ui/home/hadeth/hadeth_carousel_view.dart';
+import 'package:islami/features/main_layout/hadeth/hadeth.dart';
+import 'package:islami/features/main_layout/hadeth/hadeth_carousel_view.dart';
 
 class HadethContent extends StatefulWidget {
   const HadethContent({super.key});

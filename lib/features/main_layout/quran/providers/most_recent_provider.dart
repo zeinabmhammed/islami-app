@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/chapter.dart';
-import 'package:islami/ui/common/most_recent_shared_preferences.dart';
+import '../../../../core/widget/common/most_recent_shared_preferences.dart';
+import '../../../../data/local_data_source/chapter.dart';
 
 class MostRecentProvider extends ChangeNotifier {
   late MostRecentSharedPreferences mostRecentSharedPreferences;
