@@ -32,5 +32,11 @@ class AppImages {
 
   static const String hadethBackground = "assets/images/hadethBackground.png";
 
+  static const String radioBackground = "assets/images/Background.png";
+
+  static const String timeScreenBackground = "assets/images/timeScreen.png";
+
   static const String mostRecentBackground = "assets/images/most_recent.png";
+  static const String wave = "assets/images/wave.png";
+  static const String radio = "assets/images/radio.png";
 }
