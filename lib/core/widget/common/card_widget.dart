@@ -32,7 +32,7 @@ class _AudioCardState extends State<AudioCard> {
       margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: AppColors.gold,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(20),
         border: Border.all(color: const Color(0xFFE2BE7F)),
       ),
       child: Stack(
@@ -43,6 +43,7 @@ class _AudioCardState extends State<AudioCard> {
               isPlaying ? AppImages.wave : AppImages.radio,
               fit: BoxFit.fitWidth,
               alignment: Alignment.bottomCenter,
+              color: AppColors.black.withOpacity(0.5)
             ),
           ),
           Padding(

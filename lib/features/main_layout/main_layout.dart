@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:islami/features/main_layout/prayer/prayer_content.dart';
+import 'package:islami/features/main_layout/prayer/presentation/prayer_content.dart';
 import 'package:islami/features/main_layout/quran/quran_content.dart';
 import 'package:islami/features/main_layout/radio/presentation/screen/radio_screen.dart';
 import 'package:islami/features/main_layout/sebha/sebha_content.dart';
@@ -20,10 +20,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int selectedTapIndex = 0;
 
+  final List<String> tabBackgrounds = [
+    AppImages.defaultBackground,
+    AppImages.hadeth,
+    AppImages.sebhaBackground,
+    AppImages.radioBackground,
+    AppImages.timeScreenBackground,
+  ];
+
   @override
   Widget build(BuildContext context) {
-    MostRecentSharedPreferences provider= MostRecentSharedPreferences.getInstance();
+    MostRecentSharedPreferences provider =
+        MostRecentSharedPreferences.getInstance();
     return AppScreenWrapper(
+      backgroundImagePath: tabBackgrounds[selectedTapIndex],
       child: Scaffold(
         body: SafeArea(
           child: Column(
@@ -49,38 +59,22 @@ class _HomeScreenState extends State<HomeScreen> {
           items: [
             BottomNavigationBarItem(
               backgroundColor: AppColors.gold,
-              icon: SvgPicture.asset(
-                AppImages.icQuran,
-                width: 27,
-                height: 27,
-              ),
+              icon: SvgPicture.asset(AppImages.icQuran, width: 27, height: 27),
               label: "Quran",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.gold,
-              icon: SvgPicture.asset(
-                AppImages.icHadeth,
-                width: 27,
-                height: 27,
-              ),
+              icon: SvgPicture.asset(AppImages.icHadeth, width: 27, height: 27),
               label: "Hadeth",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.gold,
-              icon: SvgPicture.asset(
-                AppImages.icsebha,
-                width: 27,
-                height: 27,
-              ),
+              icon: SvgPicture.asset(AppImages.icsebha, width: 27, height: 27),
               label: "Sebha",
             ),
             BottomNavigationBarItem(
               backgroundColor: AppColors.gold,
-              icon: SvgPicture.asset(
-                AppImages.icRadio,
-                width: 27,
-                height: 27,
-              ),
+              icon: SvgPicture.asset(AppImages.icRadio, width: 27, height: 27),
               label: "Radio",
             ),
             BottomNavigationBarItem(
