@@ -22,24 +22,26 @@ class _HadethContentState extends State<HadethContent> {
   }
 
   @override
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      child: allHadeth.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : CarouselView.weighted(
-        controller: controller,
-        itemSnapping: true,
-        flexWeights: const <int>[1, 10, 1],
-        children: allHadeth.map((Hadeth hadeth) {
-          return HadethCarouselView(hadeth);
-        }).toList(),
-      ),
-    );
+    return allHadeth.isEmpty
+        ? const Center(child: CircularProgressIndicator())
+        : Expanded(
+            child: CarouselView.weighted(
+              controller: controller,
+              itemSnapping: true,
+              flexWeights: const <int>[1, 8, 1],
+              children: allHadeth.map((Hadeth hadeth) {
+                return HadethCarouselView(hadeth);
+              }).toList(),
+            ),
+          );
   }
 
   void loadHadethFiles() async {
-    String fileContent =
-    await rootBundle.loadString("assets/files/ahadeth.txt");
+    String fileContent = await rootBundle.loadString(
+      "assets/files/ahadeth.txt",
+    );
 
     List<String> hadethContentList = fileContent.trim().split("#");
 

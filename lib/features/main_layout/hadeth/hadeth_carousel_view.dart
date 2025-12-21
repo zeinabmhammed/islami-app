@@ -15,30 +15,34 @@ class _HadethCarouselViewState extends State<HadethCarouselView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 49),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
       width: double.infinity,
       height: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-
-      ),
+      decoration: BoxDecoration(color: AppColors.gold),
       child: Column(
         children: [
           Text(
             widget.hadeth.title,
-            style: Theme.of(
-              context,
-            ).textTheme.titleLarge?.copyWith(color: AppColors.black),
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.titleLarge?.copyWith(
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+            ),
           ),
-          SizedBox(height: 24),
+          const SizedBox(height: 20),
           Expanded(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Text(
                 widget.hadeth.content,
-                style: Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(color: AppColors.black),
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                  color: Colors.black87,
+                  height: 1.5,
+                ),
                 textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 17,
+
               ),
             ),
           ),

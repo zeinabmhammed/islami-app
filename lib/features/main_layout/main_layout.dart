@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:islami/features/main_layout/prayer/presentation/prayer_content.dart';
+import 'package:islami/features/main_layout/prayer/presentation/screen/prayer_content.dart';
 import 'package:islami/features/main_layout/quran/quran_content.dart';
 import 'package:islami/features/main_layout/radio/presentation/screen/radio_screen.dart';
 import 'package:islami/features/main_layout/sebha/sebha_content.dart';

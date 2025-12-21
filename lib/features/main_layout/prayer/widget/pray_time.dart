@@ -1,151 +1,210 @@
 import 'package:flutter/material.dart';
-import 'package:islami/core/resources/AppColors.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-class PrayTimeWidget extends StatelessWidget {
+class PrayTimeWidget extends StatefulWidget {
+  const PrayTimeWidget({super.key});
+
+  @override
+  State<PrayTimeWidget> createState() => _PrayTimeWidgetState();
+}
+
+class _PrayTimeWidgetState extends State<PrayTimeWidget> {
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 301,
-      padding: EdgeInsets.only(top: 14, left: 7, right: 7),
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-        borderRadius: BorderRadius.circular(60),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    final List<Map<String, String>> prayers = [
+      {"name": "Sunrise", "time": "04:11"},
+      {"name": "Fajr", "time": "04:04"},
+      {"name": "Dhuhr", "time": "01:01"},
+      {"name": "Asr", "time": "04:38"},
+      {"name": "Maghrib", "time": "07:57"},
+      {"name": "Isha", "time": "09:30"},
+    ];
+    return Center(
+      child: Container(
+        width: 400,
+        height: 301,
+        decoration: BoxDecoration(
+          color: const Color(0xFF856B3F),
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Stack(
+          children: [
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(35)),
+              child: Image.asset(
+                'assets/images/prayyy.png',
+                height: 350,
+                fit: BoxFit.fill,
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 14),
+              child: Column(
                 children: [
-                  _buildTopLabel("16 Jul,\n2024"),
-                  _buildTopLabel("09 Muh,\n1446"),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildTopLabel("16 Jul,\n2024"),
+                      _buildMainHeader("Pray Time", "Tuesday"),
+                      _buildTopLabel("09 Muh,\n1446"),
+                    ],
+                  ),
+
+                  const SizedBox(height: 15),
+
+               CarouselSlider.builder(
+                      itemCount: prayers.length,
+
+               itemBuilder: (context, index, realIndex) {
+                        final prayer = prayers[index];
+                        final isActive = index == currentIndex;
+
+                        Size size = MediaQuery.of(context).size;
+                        return buildPrayItem(
+                          prayer["time"]!,
+                          prayer["name"]!,
+                          isActive,
+                        );
+               },
+                      options: CarouselOptions(
+                        height: 120,
+                        viewportFraction: 0.29,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height,
+                        autoPlay: true,
+                        autoPlayCurve: Curves.fastOutSlowIn,
+                        autoPlayInterval: const Duration(seconds: 3),
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        },
+                      ),
+                    ),
+
+
+                  const SizedBox(height: 15),
+
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 11, vertical: 14),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        SizedBox(width: 24),
+                        Text(
+                          "Next Pray - 02:32",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            color: Colors.black,
+                          ),
+                        ),
+                        Icon(Icons.volume_off, color: Colors.black),
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              _buildMainHeader("Pray Time", "Tuesday"),
-            ],
-          ),
-
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _buildTimeCard("Sunrise", "04:11", false),
-                _buildTimeCard("Fajr", "04:04", false),
-                _buildTimeCard("Dhuhr", "01:01", false),
-                _buildTimeCard("ASR", "04:38", true),
-                _buildTimeCard("Maghrib", "07:57", false),
-                _buildTimeCard("Isha", "09:30", false),
-              ],
             ),
-          ),
-
-          SizedBox(height: 20),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(width: 24),
-                Text(
-                  "Next Pray - 02:32",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: Colors.black87,
-                  ),
-                ),
-                Icon(Icons.volume_off, color: Colors.black87),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
 
   Widget _buildTopLabel(String text) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 35, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: Color(0xFF856B3F),
-        borderRadius: BorderRadius.circular(30),
+        color: const Color(0xFF856B3F),
+        borderRadius: BorderRadius.circular(70),
       ),
       child: Text(
         text,
-        textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.white, fontSize: 14),
+        textAlign: TextAlign.start,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
+
+  Widget buildPrayItem(
+      String prayTime,
+      String prayName,
+      bool isActive,
+      ) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      width: 90,
+      margin:EdgeInsets.only(top: 10) ,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xff202020), Color(0xFFB19768)],
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            prayName,
+            style: TextStyle(
+              color: Colors.white70,
+              fontSize: isActive ? 14 : 5,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            prayTime,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: isActive ? 28 : 18,
+            ),
+          ),
+          const SizedBox(height: 2),
+          Text(
+            "PM",
+            style: TextStyle(
+              color: Colors.white60,
+              fontSize: isActive ? 14 : 5,
+            ),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildMainHeader(String title, String day) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 55, vertical: 30),
-      decoration: BoxDecoration(
-        color: AppColors.gold,
-        borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(30),
-          bottomRight: Radius.circular(30),
-          topLeft: Radius.circular(100),
-          topRight: Radius.circular(100),
+    return Column(
+      children: [
+        Text(
+          title,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Color(0XFF202020),
+          ),
         ),
-      ),
-      child: Column(
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-              color: AppColors.black,
-            ),
+        Text(
+          day,
+          style: const TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff202020),
           ),
-          Text(
-            day,
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: AppColors.black,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTimeCard(String name, String time, bool isSelected) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      padding: EdgeInsets.symmetric(vertical: 19, horizontal: 17),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          transform: GradientRotation(152.84 * 3.14159 / 180),
-          colors: [Color(0xFF202020), Color(0xFFB19768)],
-          stops: [0.0701, 0.9621],
         ),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        children: [
-          Text(name, style: TextStyle(color: Colors.white70, fontSize: 12)),
-          SizedBox(height: 5),
-          Text(
-            time,
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
-          ),
-          Text("PM", style: TextStyle(color: Colors.white60, fontSize: 10)),
-        ],
-      ),
+      ],
     );
   }
 }
