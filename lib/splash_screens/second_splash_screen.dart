@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/on_boarding/on_boarding_screen.dart';
+import '../core/resources/AppColors.dart';
+import '../core/resources/AppImages.dart';
+import '../features/on_boarding/on_boarding_screen.dart';
 
 class SecondSplashScreen extends StatefulWidget {
   const SecondSplashScreen({super.key});

@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:islami/core/cache/cache_keys.dart';
 import 'package:islami/core/cache/shared_pref_service.dart';
-import 'package:islami/ui/chapter_details/chapter_details.dart';
-import 'package:islami/ui/common/most_recent_provider.dart';
-import 'package:islami/ui/common/most_recent_shared_preferences.dart';
-import 'package:islami/ui/design.dart';
-import 'package:islami/ui/home/home_screen.dart';
-import 'package:islami/ui/routes.dart';
 import 'package:provider/provider.dart';
-
+import 'core/resources/AppTheme.dart';
+import 'core/routes_manger/routes.dart';
+import 'core/widget/common/most_recent_shared_preferences.dart';
+import 'features/chapter_details/chapter_details.dart';
+import 'features/main_layout/main_layout.dart';
+import 'features/main_layout/quran/providers/most_recent_provider.dart';
+import 'features/on_boarding/on_boarding_screen.dart';
 import 'splash_screens/first_splash_screen.dart';
-import 'ui/on_boarding/on_boarding_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await MostRecentSharedPreferences.init();
+  //await MostRecentSharedPreferences.getInstance().clear();
   await SharedPrefService.init();
   await MostRecentProvider().loadFirstTimeFlag();
+
   bool isFirstTime =
       SharedPrefService.getBoolean(CacheKeys.isFirstTime) ?? true;
   runApp(
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MostRecentSharedPreferences.getInstance();
     return MaterialApp(
       title: 'Islami App',
       debugShowCheckedModeBanner: false,

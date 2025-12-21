@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:islami/splash_screens/second_splash_screen.dart';
-import 'package:islami/ui/design.dart';
+import '../core/resources/AppImages.dart';
 
 class FirstSplashScreen extends StatefulWidget {
   const FirstSplashScreen({super.key});
