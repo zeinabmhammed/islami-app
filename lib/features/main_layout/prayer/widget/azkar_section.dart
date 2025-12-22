@@ -5,14 +5,14 @@ import 'package:islami/features/main_layout/prayer/widget/azkar_details_screen.d
 class AzkarSection extends StatelessWidget {
   final List<Map<String, String>> azkarList = [
     {
-      "title": "Evening Azkar",
-      "image": "assets/images/azkar1.png",
-      "jsonKey": "أذكار المساء",
-    },
-    {
       "title": "Morning Azkar",
       "image": "assets/images/azkar2.png",
       "jsonKey": "أذكار الصباح",
+    },
+    {
+      "title": "Evening Azkar",
+      "image": "assets/images/azkar1.png",
+      "jsonKey": "أذكار المساء",
     },
     {
       "title": "Sleep Azkar",
@@ -29,11 +29,6 @@ class AzkarSection extends StatelessWidget {
       "title": "Tsabeeh",
       "image": "assets/images/azkar7.png",
       "jsonKey": "تسابيح",
-    },
-    {
-      "title": "General Azkar",
-      "image": "assets/images/azkar8.png",
-      "jsonKey": "أذكار عامة",
     },
     {
       "title": "Prayer Azkar",
