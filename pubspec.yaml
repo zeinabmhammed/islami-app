@@ -45,6 +45,8 @@ dependencies:
   audioplayers: ^6.0.0
   carousel_slider: ^5.1.1
   equatable: ^2.0.7
+  date_format: ^2.0.9
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:
